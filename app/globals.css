@@ -1,26 +1,509 @@
 @import "tailwindcss";
 
+/* Root Theme */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  --background: #09090b;
+
+  --foreground: #ffffff;
+
+  --card: rgba(24, 24, 27, 0.75);
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --orange: #f97316;
+
+  --orange-light: #fb923c;
+
+  --green: #22c55e;
+
+  --red: #ef4444;
+
+  --purple: #a855f7;
+
+  --blue: #3b82f6;
+
+  --yellow: #fde047;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Base */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+
+  background:
+    radial-gradient(
+      circle at top,
+      #18181b,
+      #09090b 60%
+    );
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+  background: #18181b;
+}
+
+::-webkit-scrollbar-thumb {
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f97316,
+      #fb923c
+    );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #fb923c;
+}
+
+/* Selection */
+
+::selection {
+
+  background: #f97316;
+
+  color: white;
+}
+
+/* Inputs */
+
+input,
+textarea,
+select {
+
+  transition:
+    all 0.3s ease;
+
+  border:
+    1px solid transparent;
+
+  background:
+    rgba(39, 39, 42, 0.9);
+
+  color: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+  outline: none;
+
+  border-color: var(--orange);
+
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.25);
+}
+
+/* Buttons */
+
+button {
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+button:hover {
+
+  transform:
+    translateY(-3px);
+}
+
+button:active {
+
+  transform:
+    scale(0.97);
+}
+
+/* Glassmorphism */
+
+.glass {
+
+  background:
+    rgba(24, 24, 27, 0.7);
+
+  backdrop-filter:
+    blur(16px);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Premium Cards */
+
+.premium-card {
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 24, 27, 0.95),
+      rgba(39, 39, 42, 0.75)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter:
+    blur(14px);
+
+  border-radius: 24px;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.premium-card:hover {
+
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(249, 115, 22, 0.5);
+
+  box-shadow:
+    0 20px 45px rgba(249, 115, 22, 0.18);
+}
+
+/* Product Cards */
+
+.product-card {
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.product-card img {
+
+  transition:
+    transform 0.4s ease;
+}
+
+.product-card:hover img {
+
+  transform:
+    scale(1.08);
+}
+
+/* Gradient Text */
+
+.gradient-text {
+
+  background:
+    linear-gradient(
+      to right,
+      #fb923c,
+      #fde047
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated Gradient */
+
+.animated-gradient {
+
+  background:
+    linear-gradient(
+      270deg,
+      #f97316,
+      #fb923c,
+      #fde047,
+      #f97316
+    );
+
+  background-size:
+    600% 600%;
+
+  animation:
+    gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+
+  0% {
+
+    background-position:
+      0% 50%;
+  }
+
+  50% {
+
+    background-position:
+      100% 50%;
+  }
+
+  100% {
+
+    background-position:
+      0% 50%;
+  }
+}
+
+/* Glow Effects */
+
+.orange-glow {
+
+  box-shadow:
+    0 0 25px rgba(249, 115, 22, 0.35);
+}
+
+.green-glow {
+
+  box-shadow:
+    0 0 25px rgba(34, 197, 94, 0.35);
+}
+
+.red-glow {
+
+  box-shadow:
+    0 0 25px rgba(239, 68, 68, 0.35);
+}
+
+.blue-glow {
+
+  box-shadow:
+    0 0 25px rgba(59, 130, 246, 0.35);
+}
+
+/* Floating Animation */
+
+@keyframes float {
+
+  0% {
+
+    transform:
+      translateY(0px);
+  }
+
+  50% {
+
+    transform:
+      translateY(-8px);
+  }
+
+  100% {
+
+    transform:
+      translateY(0px);
+  }
+}
+
+.floating {
+
+  animation:
+    float 3s ease-in-out infinite;
+}
+
+/* Fade In */
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0px);
+  }
+}
+
+.fade-in {
+
+  animation:
+    fadeIn 0.5s ease forwards;
+}
+
+/* Pulse Glow */
+
+@keyframes pulseGlow {
+
+  0% {
+
+    box-shadow:
+      0 0 10px rgba(249, 115, 22, 0.2);
+  }
+
+  50% {
+
+    box-shadow:
+      0 0 30px rgba(249, 115, 22, 0.5);
+  }
+
+  100% {
+
+    box-shadow:
+      0 0 10px rgba(249, 115, 22, 0.2);
+  }
+}
+
+.pulse-glow {
+
+  animation:
+    pulseGlow 2s infinite;
+}
+
+/* Dashboard Cards */
+
+.dashboard-card {
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.dashboard-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.05),
+      transparent
+    );
+
+  transform:
+    translateX(-100%);
+
+  transition:
+    0.8s;
+}
+
+.dashboard-card:hover::before {
+
+  transform:
+    translateX(100%);
+}
+
+/* Utility */
+
+.section-title {
+
+  font-size: 2rem;
+
+  font-weight: 900;
+}
+
+.sub-text {
+
+  color: #a1a1aa;
+}
+
+.border-dark {
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Table Status */
+
+.table-free {
+
+  background:
+    rgba(63, 63, 70, 0.8);
+}
+
+.table-occupied {
+
+  background:
+    rgba(34, 197, 94, 0.85);
+}
+
+.table-reserved {
+
+  background:
+    rgba(239, 68, 68, 0.85);
+}
+
+/* Floating Buttons */
+
+.floating-btn {
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.floating-btn:hover {
+
+  transform:
+    scale(1.1);
+
+  box-shadow:
+    0 12px 30px rgba(249, 115, 22, 0.35);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+
+  .section-title {
+
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body {
+
+    font-size: 14px;
+  }
+
+  .section-title {
+
+    font-size: 1.3rem;
+  }
 }
